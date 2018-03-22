@@ -1,0 +1,1 @@
+install(FILES "${CMAKE_SOURCE_DIR}/modules/AutoRevive-module/conf/AutoRevive.conf.dist" DESTINATION ${CONF_DIR})

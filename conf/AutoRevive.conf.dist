@@ -1,0 +1,9 @@
+[worldserver]
+
+#
+#    AutoRevive.Enable
+#        Description: Automatic resurrection after death.
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+
+AutoRevive.Enable = 1
