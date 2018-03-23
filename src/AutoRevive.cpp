@@ -1,6 +1,7 @@
 #include "ScriptMgr.h"
 #include "Player.h"
 #include "AccountMgr.h"
+#include "Common.h"
 #include "Configuration/Config.h"
 
 uint32 TimeCheck_AutoRevive = 0;
@@ -41,10 +42,14 @@ class AutoRevive_WorldSC : public WorldScript
 public:
     AutoRevive_WorldSC() : WorldScript("AutoRevive_WorldSC") {}		
 	
-	void OnStartup()
+	void OnAfterConfigLoad(bool reload)
 	{	
 		std::string conf_path = _CONF_DIR;
 		std::string cfg_file = conf_path + "/modules/AutoRevive.conf";
+
+#if PLATFORM == PLATFORM_WINDOWS
+		cfg_file = "modules/AutoRevive.conf";
+#endif
 		sConfigMgr->LoadMore(cfg_file.c_str());
 	}
 };
@@ -54,4 +59,3 @@ void AddAutoReviveScripts()
     new AutoRevive_PlayerSC();
 	new AutoRevive_WorldSC();
 }
-
