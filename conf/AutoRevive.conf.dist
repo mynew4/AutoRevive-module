@@ -2,8 +2,16 @@
 
 #
 #    AutoRevive.Enable
-#        Description: Automatic resurrection after death.
-#        Default:     1  - (Enabled)
-#                     0  - (Disabled)
+#        Описание: Автоматическое воскрешение при смерти.
+#        Значение:    1  - (Включить)
+#                     0  - (Выключить)
 
 AutoRevive.Enable = 1
+
+#
+#    AutoRevive.Zone.Enable
+#        Описание: Автоматическое воскрешение при смерти только в определённой зоне.
+#        Значение:    0  - (Выключить)
+#                     1+  - (Включить)
+
+AutoRevive.ZoneID = 30

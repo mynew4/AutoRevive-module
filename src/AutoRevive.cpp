@@ -21,13 +21,28 @@ public:
 
 		uint32 NowHealth = player->GetHealth();
 		uint32 TimeCheck = 1000;
+		uint32 zoneid_conf = sConfigMgr->GetIntDefault("AutoRevive.ZoneID", 0);
+		uint32 zoneid = player->GetZoneId();
 
 		if (TimeCheck_AutoRevive < diff)
 		{
 			if (NowHealth <= 1)
 			{
-				player->ResurrectPlayer(1.0f);
-				player->SaveToDB(false, false);
+				if (zoneid_conf > 0)
+				{
+					if (zoneid_conf == zoneid)
+					{
+						player->ResurrectPlayer(1.0f);
+						player->SaveToDB(false, false);
+					}
+					else
+						return;
+				}
+				else
+				{
+					player->ResurrectPlayer(1.0f);
+					player->SaveToDB(false, false);
+				}
 			}
 			
 			TimeCheck_AutoRevive = TimeCheck;
